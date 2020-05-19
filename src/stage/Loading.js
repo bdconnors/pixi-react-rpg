@@ -2,8 +2,8 @@ import React from "react";
 import {Stage, Text} from "@inlet/react-pixi";
 import Rectangle from "../component/Rectangle";
 import {TextStyle} from "pixi.js";
-
-export class LoadingStage extends React.Component{
+/* eslint no-useless-constructor: 0 */
+export class Loading extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -19,10 +19,14 @@ export class LoadingStage extends React.Component{
         const decimal = (loader.progress / 100);
         const percent = Math.ceil(loader.progress);
         const progress = Math.ceil(this.state.total * decimal);
-        this.setState({width:progress,progress:percent});
+        this.setState({width: progress, progress: percent});
+    }
+    complete(loader,resources){
+        this.props.dispatch({type:"SET_ASSETS",payload:resources});
+        this.props.dispatch({type:"SET_STAGE",payload:"menu"});
     }
     render(){
-        const view = this.props.gameState.view;
+        const view = this.props.state.view;
         return <Stage width={view.width} height={view.height}>
             <Text text="Loading..."
                   x={100}
@@ -55,14 +59,24 @@ export class LoadingStage extends React.Component{
         </Stage>
     }
     componentDidMount() {
-        const view = this.props.gameState.view;
-        this.state.total = (view.width - (view.width * .25));
-        this.state.width = 0;
-        this.state.height = view.height * .15;
-        this.state.x = (view.width - this.state.total)/2;
-        this.state.y = (view.height - this.state.height)/2;
-        this.state.color = 0xFFFFFF;
-        this.props.dispatch({type:"QUEUE_ASSETS"});
-        this.props.dispatch({type:"LOAD_ASSETS",payload:this.update.bind(this)});
+        let state = {};
+        const view = this.props.state.view;
+        state.total = (view.width - (view.width * .25));
+        state.width = 0;
+        state.height = view.height * .15;
+        state.x = (view.width - state.total)/2;
+        state.y = (view.height - state.height)/2;
+        state.color = 0xFFFFFF;
+        this.setState(state);
+        const queueAssets = {type:"QUEUE_ASSETS"};
+        const loadAssets = {
+            type:"LOAD_ASSETS",
+            payload:{
+                update:this.update.bind(this),
+                complete:this.complete.bind(this)
+            }
+        };
+        this.props.dispatch(queueAssets);
+        this.props.dispatch(loadAssets);
     }
 }

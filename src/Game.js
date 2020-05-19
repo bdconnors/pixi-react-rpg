@@ -1,25 +1,28 @@
 import React from "react";
-import {Stage} from "@inlet/react-pixi";
 import {connect} from "react-redux";
-import {LoadingStage} from "./stage/LoadingStage";
-
-
+import {Loading} from "./stage/Loading";
+import {Menu} from "./stage/Menu";
+/* eslint no-useless-constructor: 0 */
 export class Game extends React.Component {
   constructor(props){
     super(props);
   }
   render(){
-    if(this.props.gameState.stage.current === "load"){
-      return <LoadingStage gameState = {this.props.gameState} dispatch={this.props.dispatch}/>
+    if(this.props.state.stage.current === "load"){
+      return <Loading state={this.props.state} dispatch={this.update.bind(this)}/>
+    }else if(this.props.state.stage.current === "menu"){
+      return <Menu state={this.props.state} dispatch={this.update.bind(this)}/>
     }else{
-      return <Stage gameState = {this.props.gameState} dispatch={this.props.dispatch}/>
+      return <div></div>
     }
   }
-  componentDidMount() {
-    console.log(this.props);
+  update(action){
+    this.props.dispatch(action);
+    this.setState({});
   }
+
 }
 function mapStateToProps(state){
-  return {gameState:state}
+  return {state:state}
 }
 export default connect(mapStateToProps)(Game);

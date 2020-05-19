@@ -19,20 +19,23 @@ const initialState = {
 export const setState = (state = initialState, action) =>{
     const type = action.type;
     const payload = action.payload;
-    if(type === "ADD_STAGE"){
-        initialState.stage.stages[payload.name] = payload.stage;
+    if(type === "SET_STAGE"){
+        initialState.stage.previous = initialState.stage.current;
+        initialState.stage.current = payload;
     }else if(type === "QUEUE_ASSETS"){
         manifest.forEach((item)=>{
             state.loader.add(item.name,item.path);
+            return state;
         });
     }else if(type === "LOAD_ASSETS"){
-        state.loader.onProgress.add(payload);
-        state.loader.onComplete.add(()=>{
-            Object.keys(state.loader.resources).map((key)=>{
-                state.assets[key] = state.loader.resources[key];
-            });
-        });
+        state.loader.onProgress.add(payload.update);
+        state.loader.onComplete.add(payload.complete);
         state.loader.load();
+    }else if(type === "SET_ASSETS"){
+        Object.keys(payload).map((key)=>{
+            state.assets[key] = payload[key];
+            return state;
+        });
     }
     return state;
 };

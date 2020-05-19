@@ -8,7 +8,7 @@ const container = document.getElementById("root");
 
 ReactDOM.render(
     <Provider store = {gameState}>
-        <Game width={600} height={400}/>
+        <Game/>
     </Provider>,
     container
 );
