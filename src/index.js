@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from './Game';
+import Game from './core/Game';
 import {Provider} from 'react-redux'
-import {gameState} from "./state/GameState";
+import GameState from "./core/GameState";
 
 const container = document.getElementById("root");
 
 ReactDOM.render(
-    <Provider store = {gameState}>
+    <Provider store = {GameState}>
         <Game/>
     </Provider>,
     container

@@ -1,6 +1,6 @@
 import React from "react";
 import {Stage, Text} from "@inlet/react-pixi";
-import Rectangle from "../component/Rectangle";
+import Rectangle from "../graphic/Rectangle";
 import {TextStyle} from "pixi.js";
 /* eslint no-useless-constructor: 0 */
 export class Loading extends React.Component{

@@ -9,11 +9,12 @@ const initialState = {
     },
     stage:{
         current:"load",
-        previous:null,
-        stages:{}
+        previous:null
     },
-    assets:{},
-    loader:new Loader(),
+    assets:{
+        loader:new Loader(),
+        cache:{}
+    },
     ticker:new Ticker()
 };
 export const setState = (state = initialState, action) =>{
@@ -24,19 +25,19 @@ export const setState = (state = initialState, action) =>{
         initialState.stage.current = payload;
     }else if(type === "QUEUE_ASSETS"){
         manifest.forEach((item)=>{
-            state.loader.add(item.name,item.path);
+            state.assets.loader.add(item.name,item.path);
             return state;
         });
     }else if(type === "LOAD_ASSETS"){
-        state.loader.onProgress.add(payload.update);
-        state.loader.onComplete.add(payload.complete);
-        state.loader.load();
+        state.assets.loader.onProgress.add(payload.update);
+        state.assets.loader.onComplete.add(payload.complete);
+        state.assets.loader.load();
     }else if(type === "SET_ASSETS"){
         Object.keys(payload).map((key)=>{
-            state.assets[key] = payload[key];
+            state.assets.cache[key] = payload[key];
             return state;
         });
     }
     return state;
 };
-export const gameState = createStore(setState);
+export default createStore(setState);

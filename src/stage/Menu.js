@@ -7,12 +7,12 @@ export class Menu extends React.Component{
         super(props);
         this.state = {
             slot1:{
-                textures:this.props.state.assets["arch-atk"].spritesheet.animations["atk"],
+                textures:this.props.state.assets.cache["arch-atk"].spritesheet.animations["atk"],
                 x:0,
                 y:0
             },
             slot2:{
-                textures:this.props.state.assets["arch-dash"].spritesheet.animations["dash"],
+                textures:this.props.state.assets.cache["arch-dash"].spritesheet.animations["dash"],
                 x:0,
                 y:0
             }
