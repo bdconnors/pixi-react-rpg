@@ -20,6 +20,7 @@ export class Menu extends React.Component{
     }
     render(){
         const view = this.props.state.view;
+        this.props.state.assets.cache["celestial"].sound.play({autoPlay:true,loop:true});
         return <Stage width={view.width} height={view.height}>
             <AnimatedSprite x={100} y={100} textures = {this.state.slot1.textures} animationSpeed = {0.167} isPlaying={true}/>
             <AnimatedSprite x={100} y={200} textures = {this.state.slot2.textures} animationSpeed = {0.167} isPlaying={true}/>

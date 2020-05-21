@@ -6,18 +6,25 @@ import {StageRenderer} from "./StageRenderer";
 export class Game extends React.Component {
   constructor(props){
     super(props);
-    console.log(this.props);
     this.state = {
-      style:{
-        position:"relative"
+      container:{
+        style:{
+          position:"relative",
+          width:this.props.state.view.width,
+          height:this.props.state.view.height
+        }
       }
-    };
+    }
   }
   render(){
-    return <div style={this.state.style}>
-      <StageRenderer state={this.props.state} dispatch={this.props.dispatch}/>
-      <InterfaceRenderer state={this.props.state} dispatch={this.props.dispatch}/>
+    return <div id="container" style={this.state.container.style}>
+      <StageRenderer state={this.props.state} dispatch={this.update.bind(this)}/>
+      <InterfaceRenderer state={this.props.state} dispatch={this.update.bind(this)}/>
     </div>
+  }
+  update(action){
+    this.props.dispatch(action);
+    this.setState({});
   }
 
 }
