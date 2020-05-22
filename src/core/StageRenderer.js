@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Menu} from "../stage/Menu";
+import {MainMenu} from "../stage/MainMenu";
 import {Stage} from "@inlet/react-pixi";
 /* eslint no-useless-constructor: 0 */
 export class StageRenderer extends React.Component{
@@ -11,7 +11,7 @@ export class StageRenderer extends React.Component{
         if(this.props.state.stage.current === "load"){
             return <Stage width={view.width} height={view.height}/>
         }else if(this.props.state.stage.current === "menu"){
-            return <Menu state={this.props.state} dispatch={this.update.bind(this)}/>
+            return <MainMenu state={this.props.state} dispatch={this.update.bind(this)}/>
         }else{
             return <div></div>
         }

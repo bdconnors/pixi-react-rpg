@@ -4,8 +4,8 @@ import {manifest} from "../config";
 
 const initialState = {
     view:{
-        width:600,
-        height:400
+        width:window.innerWidth ,
+        height:window.innerHeight
     },
     stage:{
         current:"load",

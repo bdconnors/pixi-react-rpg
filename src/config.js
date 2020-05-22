@@ -11,5 +11,6 @@ export const manifest =[
     {path:SOUND_PATH+"Red Carpet Wooden Floor.mp3",name:"mysteries"},
     {path:SOUND_PATH+"Red Carpet Wooden Floor.mp3",name:"red-carpet"},
     {path:SOUND_PATH+"The Arrival (BATTLE II).mp3",name:"battle-1"},
-    {path:SOUND_PATH+"Windless Slopes.mp3",name:"slopes"}
+    {path:SOUND_PATH+"Windless Slopes.mp3",name:"slopes"},
+    {path:SOUND_PATH+"Medieval Melancholy.wav",name:"melancholy"}
 ];
