@@ -4,20 +4,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 export class Loading extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            style:{
-                position:this.props.position,
-                top:(this.props.state.view.height-(this.props.state.view.height *.15))/2,
-                left:(this.props.state.view.width-(this.props.state.view.width - (this.props.state.view.width * .25)))/2,
-                bottom:(this.props.state.view.height-(this.props.state.view.height *.15))/2,
-                right:(this.props.state.view.width-(this.props.state.view.width - (this.props.state.view.width * .25)))/2,
-            },
-            progress: {
-                min: 0,
-                max: 100,
-                current: 0
-            }
-        };
+        this.state = this.props.state;
     }
     update(loader){
         const percent = Math.ceil(loader.progress);
@@ -28,12 +15,15 @@ export class Loading extends React.Component{
         this.props.dispatch({type:"SET_STAGE",payload:"menu"});
     }
     render(){
-        return <div style={this.state.style}>
-                <ProgressBar variant={this.props.color}
-                             now={this.state.progress.current}
-                             max={this.state.progress.max}
-                             min={this.state.progress.min}
-                             label={`Loading...`}/>
+        return <div style={this.state.position}>
+                <ProgressBar
+                    animated = {this.state.animated}
+                    variant={this.state.color}
+                    now={this.state.progress.current}
+                    label={`${this.state.progress.current}%`}
+                    max={this.state.progress.max}
+                    min={this.state.progress.min}
+                />
         </div>
 
     }

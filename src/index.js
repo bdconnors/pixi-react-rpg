@@ -4,7 +4,7 @@ import 'pixi.js';
 import 'pixi-sound';
 import Game from './core/Game';
 import {Provider} from 'react-redux'
-import GameState from "./core/GameState";
+import GameState from "./state/GameState";
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'jquery/dist/jquery.js'
