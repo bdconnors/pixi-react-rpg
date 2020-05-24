@@ -1,11 +1,9 @@
 const ASSET_PATH = "assets/";
-const SHEET_PATH = ASSET_PATH+"sheet/";
 const SOUND_PATH = ASSET_PATH+"sound/";
-const CHAR_PATH = SHEET_PATH+"char/";
+const CHAR_PATH = ASSET_PATH+"char/";
 
 export const manifest =[
-    {path:CHAR_PATH+"arch/arch-atk.json",name:"arch-atk"},
-    {path:CHAR_PATH+"arch/arch-dash.json",name:"arch-dash"},
+    {path:CHAR_PATH+"dark-knight.json",name:"dark-knight"},
     {path:SOUND_PATH+"Celestial.mp3",name:"celestial"},
     {path:SOUND_PATH+"Foggy Woods.mp3",name:"foggy"},
     {path:SOUND_PATH+"Red Carpet Wooden Floor.mp3",name:"mysteries"},

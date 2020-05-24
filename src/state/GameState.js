@@ -8,12 +8,19 @@ const initialState = {
         height:window.innerHeight
     },
     stage:{
-        current:"load",
+        current:"loadAssets",
         previous:null
     },
     assets:{
         loader:new Loader(),
         cache:{}
+    },
+    ui:{
+        panel:{
+            background: "linear-gradient(to top left, #0000b0 0%, #4949c7 100%)",
+            borderColor:"light",
+            textColor:"#fff"
+        }
     },
     ticker:new Ticker()
 };

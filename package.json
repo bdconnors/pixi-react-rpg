@@ -10,7 +10,7 @@
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "pixi-sound": "^3.0.4",
-    "pixi-texture-manifest-gen": "^1.0.1",
+    "pixi-texture-manifest-gen": "^1.0.3",
     "pixi.js": "^5.2.4",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",

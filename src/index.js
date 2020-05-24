@@ -7,7 +7,7 @@ import {Provider} from 'react-redux'
 import GameState from "./state/GameState";
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'jquery/dist/jquery.js'
+import 'jquery/dist/jquery.js';
 
 const container = document.getElementById("root");
 

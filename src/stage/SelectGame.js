@@ -2,7 +2,7 @@
 import * as React from "react";
 import {Stage} from "@inlet/react-pixi";
 
-export class MainMenu extends React.Component{
+export class SelectGame extends React.Component{
     constructor(props){
         super(props);
     }
