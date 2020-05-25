@@ -4,7 +4,7 @@ import {manifest} from "../config";
 
 const initialState = {
     view:{
-        width:window.innerWidth ,
+        width:window.innerWidth,
         height:window.innerHeight
     },
     stage:{
@@ -27,6 +27,8 @@ const initialState = {
 export const setState = (state = initialState, action) =>{
     const type = action.type;
     const payload = action.payload;
+    console.log(state);
+    console.log(action);
     if(type === "SET_STAGE"){
         initialState.stage.previous = initialState.stage.current;
         initialState.stage.current = payload;
@@ -44,6 +46,9 @@ export const setState = (state = initialState, action) =>{
             state.assets.cache[key] = payload[key];
             return state;
         });
+    }else if(type === "WINDOW_RESIZE"){
+        state.view.width = window.innerWidth;
+        state.view.height = window.innerHeight;
     }
     return state;
 };

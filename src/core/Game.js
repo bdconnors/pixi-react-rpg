@@ -1,35 +1,29 @@
 import React from "react";
 import {connect} from "react-redux";
 import {InterfaceRenderer} from "./InterfaceRenderer";
-import {StageRenderer} from "./StageRenderer";
+import {SceneRenderer} from "./SceneRenderer";
 /* eslint no-useless-constructor: 0 */
 export class Game extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {
-      container:{
-        style:{
-          position:"relative",
-          width:this.props.state.view.width,
-          height:this.props.state.view.height
-        }
-      }
-    }
+    window.addEventListener('resize', this.resize.bind(this));
   }
   render(){
-    return <div id="container" style={this.state.container.style}>
-      <StageRenderer state={this.props.state} dispatch={this.update.bind(this)}/>
+    return <div id="container" style={{position:"realative"}}>
+      <SceneRenderer state={this.props.state} dispatch={this.update.bind(this)}/>
       <InterfaceRenderer state={this.props.state} dispatch={this.update.bind(this)}/>
     </div>
   }
   update(action){
     this.props.dispatch(action);
-    this.setState({});
+    this.setState(this.props.state);
+  }
+  resize(){
+    this.update({type:"WINDOW_RESIZE"});
   }
 
 }
 function mapStateToProps(state){
-  console.log(state);
   return {state:state}
 }
 export default connect(mapStateToProps)(Game);

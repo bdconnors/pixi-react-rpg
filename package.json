@@ -8,6 +8,8 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
+    "electron": "^9.0.0",
+    "foreman": "^3.0.1",
     "jquery": "^3.5.1",
     "pixi-sound": "^3.0.4",
     "pixi-texture-manifest-gen": "^1.0.3",
@@ -20,7 +22,12 @@
     "redux": "^4.0.5"
   },
   "scripts": {
-    "start": "node start"
+    "start": "nf start -p 3000",
+    "react-start": "node src/scripts/react-start",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron ./src/scripts/electron-start",
+    "electron-start": "node src/scripts/electron-wait-react"
   },
   "eslintConfig": {
     "extends": "react-app"

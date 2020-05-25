@@ -1,8 +1,10 @@
+const path = require('path');
+const PUBLIC_PATH = "public/";
 const ASSET_PATH = "assets/";
-const SOUND_PATH = ASSET_PATH+"sound/";
-const CHAR_PATH = ASSET_PATH+"char/";
+const SOUND_PATH = path.join(ASSET_PATH,'sound/');
+const CHAR_PATH =  path.join(ASSET_PATH,'char/');
 
-export const manifest =[
+const manifest =[
     {path:CHAR_PATH+"dark-knight.json",name:"dark-knight"},
     {path:SOUND_PATH+"Celestial.mp3",name:"celestial"},
     {path:SOUND_PATH+"Foggy Woods.mp3",name:"foggy"},
@@ -12,3 +14,23 @@ export const manifest =[
     {path:SOUND_PATH+"Windless Slopes.mp3",name:"slopes"},
     {path:SOUND_PATH+"Medieval Melancholy.wav",name:"melancholy"}
 ];
+
+const assets = [
+    {
+        path:PUBLIC_PATH+CHAR_PATH+"dark-knight.png",
+        col:6,
+        row:4,
+        animations:[
+            {name:"walk-fwd",start:1,end:6},
+            {name:"walk-back",start:7,end:12},
+            {name:"walk-right",start:13,end:18},
+            {name:"walk-left",start:18,end:24}
+        ]
+    }
+];
+module.exports = {};
+module.exports.assets = assets;
+module.exports.manifest = manifest;
+module.exports.ASSET_PATH = ASSET_PATH;
+module.exports.SOUND_PATH = SOUND_PATH;
+module.exports.CHAR_PATH = CHAR_PATH;

@@ -2,7 +2,7 @@
 import * as React from "react";
 import {AnimatedSprite, Stage} from "@inlet/react-pixi";
 
-export class FieldStage extends React.Component{
+export class Field extends React.Component{
     constructor(props){
         super(props);
     }
@@ -18,4 +18,4 @@ export class FieldStage extends React.Component{
         this.props.state.assets.cache["melancholy"].sound.play({autoPlay:true,loop:true});
     }
 }
-export default FieldStage;
+export default Field;

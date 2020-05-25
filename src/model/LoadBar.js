@@ -1,4 +1,4 @@
-class LoadBarState{
+class LoadBar{
     constructor(
         view,
         animated = false,
@@ -27,4 +27,4 @@ class LoadBarState{
     }
 
 }
-export default LoadBarState
+export default LoadBar
