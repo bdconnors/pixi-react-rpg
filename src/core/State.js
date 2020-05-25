@@ -1,34 +1,26 @@
 import { createStore } from "redux";
 import {Loader,Ticker} from "pixi.js";
 import {manifest} from "../config";
+import View from "../model/View";
+import Stage from "../model/Stage";
+import Keyboard from "../model/Keyboard";
+import Player from "../model/Player";
+import Cache from "../model/Cache";
 
 const initialState = {
-    view:{
-        width:window.innerWidth,
-        height:window.innerHeight
-    },
-    stage:{
-        current:"loadAssets",
-        previous:null
-    },
+    view:new View(),
+    player:new Player(),
+    stage:new Stage("loadAssets"),
+    keyboard:new Keyboard(),
     assets:{
         loader:new Loader(),
-        cache:{}
-    },
-    ui:{
-        panel:{
-            background: "linear-gradient(to top left, #0000b0 0%, #4949c7 100%)",
-            borderColor:"light",
-            textColor:"#fff"
-        }
+        cache:new Cache()
     },
     ticker:new Ticker()
 };
 export const setState = (state = initialState, action) =>{
     const type = action.type;
     const payload = action.payload;
-    console.log(state);
-    console.log(action);
     if(type === "SET_STAGE"){
         initialState.stage.previous = initialState.stage.current;
         initialState.stage.current = payload;
@@ -47,8 +39,12 @@ export const setState = (state = initialState, action) =>{
             return state;
         });
     }else if(type === "WINDOW_RESIZE"){
-        state.view.width = window.innerWidth;
-        state.view.height = window.innerHeight;
+        state.view.resize();
+    }else if(type === "KEYBOARD_INPUT"){
+        state.keyboard.update(payload);
+        if(state.player.onScreen){
+            state.player.update(state.keyboard);
+        }
     }
     return state;
 };

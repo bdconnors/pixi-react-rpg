@@ -13,6 +13,7 @@ export class Loading extends React.Component{
     complete(loader,resources){
         this.props.dispatch({type:"SET_ASSETS",payload:resources});
         this.props.dispatch({type:"SET_STAGE",payload:"field"});
+
     }
     render(){
         return <div style={this.state.position}>

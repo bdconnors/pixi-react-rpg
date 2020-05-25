@@ -8,10 +8,20 @@ export class Field extends React.Component{
     }
     render(){
         const view = this.props.state.view;
+        const player = this.props.state.player;
+        player.onScreen = true;
         const spriteSheet = this.props.state.assets.cache["dark-knight"].spritesheet;
-        const animation = spriteSheet.animations["walk-fwd"];
+        player.setSpritesheet(spriteSheet);
+        const textures = player.getTexture();
         return <Stage width={view.width} height={view.height}>
-            <AnimatedSprite textures={animation} x ={100} y={100} animationSpeed={0.167} isPlaying={true}/>
+            <AnimatedSprite
+                textures={textures}
+                initialFrame={0}
+                x={player.x}
+                y={player.y}
+                animationSpeed={0.1}
+                isPlaying={player.moving}
+            />
         </Stage>
     }
     componentDidMount() {

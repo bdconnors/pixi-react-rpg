@@ -23,8 +23,8 @@ const assets = [
         animations:[
             {name:"walk-fwd",start:1,end:6},
             {name:"walk-back",start:7,end:12},
-            {name:"walk-right",start:13,end:18},
-            {name:"walk-left",start:18,end:24}
+            {name:"walk-right",start:13,end:17},
+            {name:"walk-left",start:19,end:23}
         ]
     }
 ];
